@@ -1,0 +1,109 @@
+.rating {
+  background-color: rgb(238, 147, 0);
+  color: white;
+  /* -webkit-transform: skewX(-10deg);
+  -moz-transform: skewX(-10deg);
+  -ms-transform: skewX(-10deg);
+  transform: skewX(-10deg); */
+  position: absolute;
+  top: 0;
+  padding: 0px 8px;
+  font-size: 9px;
+  border-radius: 3px 0 0 0;
+}
+
+.category.card-subtitle{
+    margin: 0.5px 0 0 0 ;
+    color: rgb(130, 129, 129);
+}
+
+.pricing.card-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  margin:0;
+  color: rgb(130, 129, 129);
+  
+}
+
+.pricing .dollar {
+  font-size: 7px;
+  font-weight: lighter;
+  vertical-align: text-top;
+  margin: 0 0.5px;
+  color: black;
+}
+
+.number{
+    color: black;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+tr.table-item{
+  font-size: 9px;
+  text-align: center;
+  margin: 0;
+}
+
+td .img-fluid{
+  width: 100%;
+  /* border: 1px solid black; */
+  padding: 0;
+  margin: 0;
+  height: 60px;
+
+
+}
+
+td.tdata{
+  vertical-align: middle;
+}
+
+td.description{
+  width: 55%;
+  padding: 0 85px 0 20px;
+  text-align: left;
+}
+
+td.left{
+  padding: 0;
+  margin: 0;
+}
+
+.read-btn{
+  border: none;
+  background-color: white;
+  color: rgb(58, 142, 175);
+}
+
+div.dropdown button{
+  font-size: 9px;
+  border: none;
+  border-radius: 0%;
+  background-color: rgb(234, 234, 234);
+  color: black;
+}
+
+div.dropdown button:hover{
+  background-color: lightgray;
+  color: black;
+}
+
+div.dropdown-menu{
+  width: 20px;
+  border: 1px solid rgb(62, 60, 60);
+  padding-bottom: 0;
+}
+
+button.dropdown-item{
+  width: 48.33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  
+}
+
+.piece{
+  font-size: 7px;
+}

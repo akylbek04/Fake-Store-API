@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cart-icon {
+  font-size: 14rem;
+  color: rgba(192, 192, 192, 0.358);
+  margin-top: 30px;
+}
+
+td.header {
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 20px;
+  padding-top: 0;
+  letter-spacing: 1.5px;
+  width: auto;
+  color: black;
+}
+

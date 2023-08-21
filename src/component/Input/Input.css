@@ -1,0 +1,40 @@
+div.input-group{
+    
+    width: auto;
+    height: auto;
+
+}
+
+.input-group input{
+    min-width: 220px;
+} 
+
+.input-group button{
+    background-color: rgb(234, 178, 75);
+    border: none;
+    padding: 5px 10px;
+    color: black;
+} 
+
+input.debounce-input{
+    border: none;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 0;
+    margin: 0;
+    /* vertical-align: bottom; */
+}
+
+ .debounce{
+    border: none;
+    height: 35px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 0;
+    margin: 0;
+     /* vertical-align: middle;  */
+    border-radius:  0 5px 5px 0;
+}
+
