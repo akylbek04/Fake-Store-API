@@ -3,6 +3,7 @@ import { Button, Offcanvas, OffcanvasHeader, OffcanvasBody } from "reactstrap";
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function Canvas({ category, setActiveCategory, activecategory }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,16 +27,20 @@ function Canvas({ category, setActiveCategory, activecategory }) {
         <OffcanvasBody>
           <div className="headline">Shop by Department</div>
           {category.map((el, index) => {
+
+            
             return (
-              <Button
-                key={index}
-                className="category-btn"
-                onClick={() => setActiveCategory(el)}
-                active={el === activecategory}
-              >
-                {el}
-                <MdOutlineKeyboardArrowRight  className="fs-6 arrow "  />
-              </Button>
+              <Link to={`category/${el}`}>
+                <Button
+                  key={index}
+                  className="category-btn"
+                  onClick={() => setActiveCategory(el)}
+                  active={el === activecategory}
+                >
+                  {el}
+                  <MdOutlineKeyboardArrowRight className="fs-6 arrow " />
+                </Button>
+              </Link>
             );
           })}
         </OffcanvasBody>

@@ -10,6 +10,7 @@ import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 import { MdOutlineElectricBolt } from "react-icons/md";
 import { FaRegGem } from "react-icons/fa";
 import { LuFileDigit } from "react-icons/lu";
+import CartItemModal from "../Modal/Modal";
 import "./CartItem.css";
 
 export const TableItem = ({
@@ -44,9 +45,9 @@ export const TableItem = ({
 
   return (
     <tr className="table-item">
-      <td colSpan={1} width="60" className=" tdata">
+      <td colSpan={1} width="60" className="tdata">
         <img
-          className="img-fluid "
+          className="img-fluid ms-2"
           src={image}
           alt={description.substring(0, 10)}
         />
@@ -57,7 +58,7 @@ export const TableItem = ({
           Read more...
         </button>
       </td>
-      <td className=" tdata left" colSpan={1}>
+      <td className=" tdata left " colSpan={1}>
         ${price}
       </td>
 
@@ -76,12 +77,12 @@ export const TableItem = ({
         </UncontrolledDropdown>
       </td>
       <td className=" tdata left" colSpan={1}>
-        <strong>${price * quantity}</strong>
+        <strong>${(price * quantity).toFixed(2)}</strong>
       </td>
       <td className="tdata left " colSpan={1}>
         <BsTrash3Fill
           onClick={() => handleDelete(id)}
-          className="add-cart  ms-2"
+          className="add-cart  me-3"
         />
       </td>
     </tr>

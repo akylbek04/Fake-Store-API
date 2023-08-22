@@ -6,6 +6,7 @@ import { ProductList } from "./component/ProductList/ProductList";
 import { PiSmileyXEyesLight } from "react-icons/pi";
 import { Wrapper, Merger } from "./component/Styled-components/Style";
 import { FavPage } from "./component/FavPage/FavPage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState([]);
@@ -125,21 +126,20 @@ function App() {
     const filtered = cart.filter((item) => item.id !== id);
     setCart(filtered);
     localStorage.setItem("cart", JSON.stringify(filtered));
-    const filteredFav = favourites.filter(item => item.id !== id);
+    const filteredFav = favourites.filter((item) => item.id !== id);
     localStorage.setItem("favourites", JSON.stringify(filteredFav));
-
   };
 
   const updateQuantity = (digit, id) => {
-    const updated = cart.map(item => {
-      if(item.id === id){
-        item.quantity = digit
+    const updated = cart.map((item) => {
+      if (item.id === id) {
+        item.quantity = digit;
       }
-      return item
-    })
-    setCart(updated)
+      return item;
+    });
+    setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
-  }
+  };
 
   const filteredProoducts = data.filter((product) => {
     if (activecategory === "All") {
@@ -182,7 +182,7 @@ function App() {
         handleMode={handleMode}
         isNight={isNight}
       />
-      {display ? (
+      {/* {display ? (
         <CartList
           handleDelete={handleDelete}
           input={input}
@@ -193,7 +193,7 @@ function App() {
         />
       ) : displayFav ? (
         <FavPage
-        handleDelete={handleDelete}
+          handleDelete={handleDelete}
           favourites={favourites}
           addToCart={addToCart}
           input={input}
@@ -215,34 +215,54 @@ function App() {
           <PiSmileyXEyesLight className="err-icon" />
           <h1>Data not found</h1>
         </div>
-      )}
-
-      {/* {displayFav && (
-        <FavPage
-          favourites={favourites}
-          addToCart={addToCart}
-          input={input}
-          check={check}
-          activecategory={activecategory}
-        />
-      )}
-
-      {data.length > 0 ? (
-        <ProductList
-          filteredProoducts={filteredProoducts}
-          addToCart={addToCart}
-          input={input}
-          check={check}
-          activecategory={activecategory}
-          handleFav={handleFav}
-          checkFav={checkFav}
-        />
-      ) : (
-        <div className="errPage">
-          <PiSmileyXEyesLight className="err-icon" />
-          <h1>Data not found</h1>
-        </div>
       )} */}
+
+      <Routes>
+        
+        <Route
+          path="/"
+          element={
+            <ProductList
+            
+              data={data}
+              addToCart={addToCart}
+              input={input}
+              check={check}
+              activecategory={activecategory}
+              handleFav={handleFav}
+              checkFav={checkFav}
+            />
+          }
+        ></Route>
+        <Route
+          path="/category/:category"
+          element={
+            <ProductList
+            
+              data={data}
+              addToCart={addToCart}
+              input={input}
+              check={check}
+              activecategory={activecategory}
+              handleFav={handleFav}
+              checkFav={checkFav}
+            />
+          }
+        ></Route>
+        <Route
+          path="/cart"
+          element={
+            <CartList
+              handleDelete={handleDelete}
+              input={input}
+              check={check}
+              activecategory={activecategory}
+              filteredCart={filteredCart}
+              updateQuantity={updateQuantity}
+            />
+          }
+        ></Route>
+      </Routes>
     </div>
   );
 }

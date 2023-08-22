@@ -7,6 +7,7 @@ import { Wrapper, Button, Merger } from "../Styled-components/Style";
 import { GrMoney } from "react-icons/gr";
 import { FaMoon } from "react-icons/fa";
 import Canvas from "../OffCanvas/OffCanvas";
+import { Link } from "react-router-dom";
 
 export const NavbarComponent = ({
   cart,
@@ -67,13 +68,17 @@ export const NavbarComponent = ({
               {cart.reduce((sum, el) => sum + el.quantity, 0)}
             </div>
             {display ? (
-              <Button onClick={handleDisplay}>
-                <AiOutlineHome className="cart-item" />
-              </Button>
+              <Link to="/">
+                <Button onClick={handleDisplay}>
+                  <AiOutlineHome className="cart-item" />
+                </Button>
+              </Link>
             ) : (
-              <Button disabled={check} onClick={handleDisplay}>
-                <BsCart4 className={customClass} />
-              </Button>
+              <Link to="/cart">
+                <Button disabled={check} onClick={handleDisplay}>
+                  <BsCart4 className={customClass} />
+                </Button>
+              </Link>
             )}
           </div>
           <Button onClick={() => handleMode()} className="ms-3 mode">
