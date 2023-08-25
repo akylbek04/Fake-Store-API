@@ -27,12 +27,9 @@ function Canvas({ category, setActiveCategory, activecategory }) {
         <OffcanvasBody>
           <div className="headline">Shop by Department</div>
           {category.map((el, index) => {
-
-            
             return (
-              <Link to={`category/${el}`}>
+              <Link key={index} to={`category/${el}`}>
                 <Button
-                  key={index}
                   className="category-btn"
                   onClick={() => setActiveCategory(el)}
                   active={el === activecategory}
@@ -43,6 +40,18 @@ function Canvas({ category, setActiveCategory, activecategory }) {
               </Link>
             );
           })}
+          <div className="headline">Others</div>
+              <Link  to='/favourites'>
+                <Button
+                  className="category-btn"
+                  onClick={() => setActiveCategory('favourites')}
+                  active={'favourites' === activecategory}
+                >
+                  favourites
+                  <MdOutlineKeyboardArrowRight className="fs-6 arrow " />
+                </Button>
+              </Link>
+
         </OffcanvasBody>
       </Offcanvas>
     </div>

@@ -21,5 +21,6 @@ export const Merger = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 10px 0 8px;
+  
 `;
 

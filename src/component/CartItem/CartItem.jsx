@@ -24,10 +24,11 @@ export const TableItem = ({
   handleDelete,
   rating,
   quantity,
-  updateQuantity
+  updateQuantity,
 }) => {
   const popularity = rating.rate > 4.5 && "Best Seller";
 
+  
   /* Pricing */
   const half = parseFloat(price).toString().split(".");
   const secondHalf = half[1] ? half[1] : "00";
@@ -41,7 +42,21 @@ export const TableItem = ({
   } else if (category === "jewelery") {
     icon = <FaRegGem />;
   }
-  const digits = [1,2,3,4,5,6,7,8,9,10]
+  const digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const modalProp = {
+    title,
+    price,
+    description,
+    category,
+    image,
+    addToCart,
+    id,
+    handleDelete,
+    rating,
+    quantity,
+    updateQuantity,
+    digits
+  };
 
   return (
     <tr className="table-item">
@@ -54,9 +69,10 @@ export const TableItem = ({
       </td>
       <td colSpan={3} className=" tdata description">
         {description.substring(0, 150)}
-        <button className="read-btn" color="primary">
+        {/* <button  className="read-btn" color="primary">
           Read more...
-        </button>
+        </button> */}
+        <CartItemModal {...modalProp} />
       </td>
       <td className=" tdata left " colSpan={1}>
         ${price}
@@ -64,12 +80,20 @@ export const TableItem = ({
 
       <td className="tdata left" colSpan={3}>
         <UncontrolledDropdown>
-          <DropdownToggle caret>{quantity}<span className="piece">pcs</span></DropdownToggle>
+          <DropdownToggle caret>
+            {quantity}
+            <span className="piece">pcs</span>
+          </DropdownToggle>
           <DropdownMenu className="border-0 m-0 p-0 menu rounded-4">
             {digits.map((digit) => {
               return (
-                <DropdownItem  onClick={() => updateQuantity(digit,id)} className="ps-3" key={digit}>
-                  {digit}<span className="piece">pcs</span>
+                <DropdownItem
+                  onClick={() => updateQuantity(digit, id)}
+                  className="ps-3"
+                  key={digit}
+                >
+                  {digit}
+                  <span className="piece">pcs</span>
                 </DropdownItem>
               );
             })}

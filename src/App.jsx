@@ -58,17 +58,15 @@ function App() {
   const fetchData = async (url) => {
     try {
       const res = await fetch(url);
-      // console.log(res);
+      if (!res.ok) throw new Error("Bad request");
       const data = await res.json();
       setData(data);
-      // console.log(data, "DATA ");
+      console.log(data, ">>> DATA");
       const uniqueCategories = [
         "All",
-        ...new Set(data.map((item) => item.category)),
-        "favourites",
+        ...new Set(data.map((item) => item.category))
       ];
       setCategories(uniqueCategories);
-      // console.log(uniqueCategories, 'cnsdac sdv ');
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +77,9 @@ function App() {
   };
 
   const handleFav = (id) => {
+    
     const item = data.find((el) => el.id === id);
+
     if (!favourites.some((el) => el.id === id)) {
       setFavourites([...favourites, item]);
       localStorage.setItem("favourites", JSON.stringify([...favourites, item]));
@@ -141,13 +141,13 @@ function App() {
     localStorage.setItem("cart", JSON.stringify(updated));
   };
 
-  const filteredProoducts = data.filter((product) => {
-    if (activecategory === "All") {
-      return true;
-    } else {
-      return product.category === activecategory;
-    }
-  });
+  // const filteredProoducts = data.filter((product) => {
+  //   if (activecategory === "All") {
+  //     return true;
+  //   } else {
+  //     return product.category === activecategory;
+  //   }
+  // });
 
   // console.log(filteredProoducts, "product");
 
@@ -218,12 +218,10 @@ function App() {
       )} */}
 
       <Routes>
-        
         <Route
           path="/"
           element={
             <ProductList
-            
               data={data}
               addToCart={addToCart}
               input={input}
@@ -238,7 +236,6 @@ function App() {
           path="/category/:category"
           element={
             <ProductList
-            
               data={data}
               addToCart={addToCart}
               input={input}
@@ -259,6 +256,19 @@ function App() {
               activecategory={activecategory}
               filteredCart={filteredCart}
               updateQuantity={updateQuantity}
+            />
+          }
+        ></Route>
+        <Route
+          path="/favourites"
+          element={
+            <FavPage
+              handleDelete={handleDelete}
+              favourites={favourites}
+              addToCart={addToCart}
+              input={input}
+              check={check}
+              activecategory={activecategory}
             />
           }
         ></Route>
