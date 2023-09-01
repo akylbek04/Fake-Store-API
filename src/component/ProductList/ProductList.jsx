@@ -82,7 +82,7 @@ export const ProductList = ({
 
         <Button
           color="white"
-          disabled={activePage === 1}
+          disabled={activePage ===  1}
           onClick={first}
           className="rounded-0 px-2 py-0 ms-2  border border-1"
         >
