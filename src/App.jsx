@@ -7,6 +7,7 @@ import { PiSmileyXEyesLight } from "react-icons/pi";
 import { Wrapper, Merger } from "./component/Styled-components/Style";
 import { FavPage } from "./component/FavPage/FavPage";
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState([]);
@@ -57,14 +58,14 @@ function App() {
 
   const fetchData = async (url) => {
     try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Bad request");
-      const data = await res.json();
+      const response = await axios.get(url);
+      if (response.status !== 200) throw new Error("Bad request");
+      const data = response.data;
       setData(data);
       console.log(data, ">>> DATA");
       const uniqueCategories = [
         "All",
-        ...new Set(data.map((item) => item.category))
+        ...new Set(data.map((item) => item.category)),
       ];
       setCategories(uniqueCategories);
     } catch (error) {

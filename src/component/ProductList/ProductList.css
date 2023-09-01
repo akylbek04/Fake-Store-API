@@ -1,0 +1,22 @@
+.arrow{
+    border: 0.5px solid lightgrey;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 3.5px;
+    margin: 0 5px;
+}
+
+.arrow:hover{
+    background-color: lightgray;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.pg-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 10px 0 30px;
+    /* border: 1px solid black; */
+}
